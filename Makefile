@@ -6,7 +6,7 @@
 #    By: evlad <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/12 16:48:29 by evlad             #+#    #+#              #
-#    Updated: 2017/04/21 20:09:38 by evlad            ###   ########.fr        #
+#    Updated: 2017/04/25 17:53:04 by evlad            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,14 +15,19 @@ NAME = lem_in
 SRC = src
 
 LIST = main.c \
+	   parsing.c \
+	   init.c \
+	   free.c \
+	   check.c \
+	   stock.c \
 
-PATH = $(OBJ_PATH)$(NAME)/
+PATH_P = $(OBJ_PATH)$(NAME)/
 
 FILES = $(LIST:%=./$(SRC)/%)
 
 OBJ = $(LIST:%.c=%.o)
 
-PROGRAM = $(OBJ:%=$(PATH)%)
+PROGRAM = $(OBJ:%=$(PATH_P)%)
 
 LIBFT = ./libft/libft.a
 
@@ -34,9 +39,9 @@ FLAGS = -Wextra -Werror -Wall
 
 OK = "\033[1;32m[OK]\033[0m"
 
-$(PATH)%.o: $(FILES) ./$(SRC)/$(NAME).h
+$(PATH_P)%.o: $(FILES) ./$(SRC)/$(NAME).h
 	@mkdir -p $(OBJ_PATH)
-	@mkdir -p $(PATH)
+	@mkdir -p $(PATH_P)
 	@gcc $(FLAGS) -c ./$(SRC)/$(@F:%.o=%.c) -o $(@F:%=$(OBJ_PATH)$(NAME)/%)
 
 all: $(LIBFT) $(NAME)
@@ -48,7 +53,7 @@ $(LIBFT):
 	@echo $(OK)
 
 $(NAME): $(PROGRAM)
-	@echo -n '-> Compiling  LEM_IN ..'
+	@echo -n '-> Compiling LEM_IN ..'
 	@gcc -o $(NAME) $(OBJ:%=$(OBJ_PATH)$(NAME)/%) $(LIBFT_INC)
 	@echo -n '.		'
 	@echo $(OK)

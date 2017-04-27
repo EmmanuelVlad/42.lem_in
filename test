@@ -5,4 +5,6 @@ room1 42 43
 room2 2 3
 ##end
 end 4 6
-end-start
+endt 4 2
+endt-room1
+start-room1

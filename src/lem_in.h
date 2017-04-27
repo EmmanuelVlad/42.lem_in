@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 20:06:19 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/25 18:36:38 by evlad            ###   ########.fr       */
+/*   Updated: 2017/04/27 19:06:24 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@ typedef struct			s_all
 */
 
 t_link					*init_link(char *room1, char *room2);
-t_room					*init_room(char *name, int start, int end, int x,
-							int y);
+t_room					*init_room(char *name, int startend, int x, int y);
 t_all					*init_all(void);
 t_entry					*init_entry(char *str, int line);
 
@@ -95,10 +94,12 @@ void					find_end(t_room *room);
 ** --------------------------------------------------------------------------
 */
 
-void					parse_line(t_all *all, int start, int end);
+t_entry					*parse_line(t_all *all, t_entry *entry, int start,
+							int end);
 void					parse_ants(t_all *all);
-void					parse_room(t_all *all, int start, int end);
-void					parse_link(t_all *all);
+void					parse_room(t_all *all, t_entry *entry, int start,
+							int end);
+void					parse_link(t_all *all, t_entry *entry);
 
 /*
 ** --------------------------------------------------------------------------
@@ -108,6 +109,7 @@ void					parse_link(t_all *all);
 
 int						check_is_room(char *str);
 int						check_is_link(char *str);
+int						room_exists(t_all *all, char *str, int start, int end);
 
 /*
 ** --------------------------------------------------------------------------

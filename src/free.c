@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 14:05:36 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/25 18:36:44 by evlad            ###   ########.fr       */
+/*   Updated: 2017/04/27 19:07:13 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,12 @@ void		free_entry(t_entry *entry)
 	tmp = NULL;
 	if (entry == NULL)
 		return ;
-	while (entry->prev)
-		entry = entry->prev;
 	while (entry)
 	{
 		tmp = entry;
 		entry = entry->next;
-		free(tmp->str);
+		if (tmp->str)
+			ft_strdel(&tmp->str);
 		free(tmp);
 	}
 	free(entry);
@@ -38,17 +37,16 @@ void		free_link(t_link *link)
 	tmp = NULL;
 	if (link == NULL)
 		return ;
-	while (link->prev)
-		link = link->prev;
 	while (link)
 	{
 		tmp = link;
 		link = link->next;
-		free(tmp->room1);
-		free(tmp->room2);
+		if (tmp->room1)
+			ft_strdel(&tmp->room1);
+		if (tmp->room2)
+			ft_strdel(&tmp->room2);
 		free(tmp);
 	}
-	free(link);
 }
 
 void		free_room(t_room *room)
@@ -58,19 +56,18 @@ void		free_room(t_room *room)
 	tmp = NULL;
 	if (room == NULL)
 		return ;
-	while (room->prev)
-		room = room->prev;
-	while (room)
+	while (room != NULL)
 	{
 		tmp = room;
 		room = room->next;
-		free(tmp->name);
-		free(tmp);
+		if (tmp->name)
+			ft_strdel(&tmp->name);
+		if (tmp)
+			free(tmp);
 	}
-	free(room);
 }
 
-void	free_all(t_all *all)
+void		free_all(t_all *all)
 {
 	free_entry(all->entry);
 	free_link(all->link);
@@ -78,7 +75,7 @@ void	free_all(t_all *all)
 	free(all);
 }
 
-void	print_exit(char *str)
+void		print_exit(char *str)
 {
 	ft_printf("%s", str);
 	exit(EXIT_FAILURE);

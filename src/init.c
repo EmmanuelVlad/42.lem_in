@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 13:43:40 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/25 18:35:02 by evlad            ###   ########.fr       */
+/*   Updated: 2017/04/27 19:06:39 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,21 @@ t_link		*init_link(char *room1, char *room2)
 	return (link);
 }
 
-t_room		*init_room(char *name, int start, int end, int x, int y)
+t_room		*init_room(char *name, int startend, int x, int y)
 {
 	t_room		*room;
 
 	if (!(room = (t_room*)malloc(sizeof(t_room))))
 		exit(EXIT_FAILURE);
 	room->name = name;
-	room->start = start;
-	room->end = end;
+	if (startend == 1)
+		room->start = 1;
+	else
+		room->start = 0;
+	if (startend == 2)
+		room->end = 1;
+	else
+		room->end = 0;
 	room->x = x;
 	room->y = y;
 	room->occuped = 0;
@@ -40,7 +46,7 @@ t_room		*init_room(char *name, int start, int end, int x, int y)
 	return (room);
 }
 
-t_all	*init_all(void)
+t_all		*init_all(void)
 {
 	t_all	*all;
 

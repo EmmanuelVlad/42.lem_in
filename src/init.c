@@ -6,20 +6,19 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 13:43:40 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/27 19:06:39 by evlad            ###   ########.fr       */
+/*   Updated: 2017/04/28 14:14:22 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_link		*init_link(char *room1, char *room2)
+t_link		*init_link(t_room *room)
 {
 	t_link		*link;
 
 	if (!(link = (t_link*)malloc(sizeof(t_link))))
 		exit(EXIT_FAILURE);
-	link->room1 = room1;
-	link->room2 = room2;
+	link->room = room;
 	link->next = NULL;
 	return (link);
 }
@@ -54,7 +53,6 @@ t_all		*init_all(void)
 		exit(EXIT_FAILURE);
 	all->ants = 0;
 	all->room = NULL;
-	all->link = NULL;
 	all->entry = NULL;
 	return (all);
 }

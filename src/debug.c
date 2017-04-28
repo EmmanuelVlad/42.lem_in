@@ -1,55 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find.c                                             :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/24 14:02:37 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/28 15:05:35 by evlad            ###   ########.fr       */
+/*   Created: 2017/04/28 14:19:43 by evlad             #+#    #+#             */
+/*   Updated: 2017/04/28 18:16:05 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "debug.h"
 
-t_room		*find_start(t_all *all)
+void		show_all_rooms(t_all *all)
 {
 	t_room	*room;
 
 	room = all->room;
+	if (room == NULL)
+		ft_printf("ERROR:\tNO ROOMS.\n");
 	while (room)
 	{
-		if (room->start)
-			break ;
+		ft_printf("ROOM `%s`\n\tX: %d\n\tY: %d\n\n", room->name, room->x,
+																	room->y);
 		room = room->next;
 	}
-	return (room);
 }
 
-t_room		*find_end(t_all *all)
+void		show_all_links(t_room *room)
 {
-	t_room	*room;
+	t_link	*tmp;
 
-	room = all->room;
-	while (room)
-	{
-		if (room->end)
-			break ;
-		room = room->next;
-	}
-	return (room);
-}
-
-t_room		*find(t_all *all, char *str)
-{
-	t_room	*tmp;
-
-	tmp = all->room;
+	tmp = room->links;
+	if (tmp)
+		ft_printf("LINKS OF `%s`\n", room->name);
+	else
+		ft_printf("ERROR:\tNO LINKS FOR `%s`.\n", room->name);
 	while (tmp)
 	{
-		if (ft_strcmp(tmp->name, str) == 0)
-			break ;
+		ft_printf("\t`%s`\n", tmp->room->name);
 		tmp = tmp->next;
 	}
-	return (tmp);
+	ft_putchar('\n');
 }

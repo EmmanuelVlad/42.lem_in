@@ -6,55 +6,15 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 20:06:19 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/27 19:06:24 by evlad            ###   ########.fr       */
+/*   Updated: 2017/04/28 15:07:53 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
+# include "./structures.h"
 # include "../libft/libft.h"
-
-/*
-** --------------------------------------------------------------------------
-**									STRUCTURES
-** --------------------------------------------------------------------------
-*/
-
-typedef struct			s_link
-{
-	char				*room1;
-	char				*room2;
-	struct s_link		*next;
-	struct s_link		*prev;
-}						t_link;
-
-typedef struct			s_room
-{
-	char				*name;
-	int					start;
-	int					end;
-	int					x;
-	int					y;
-	int					occuped;
-	struct s_room		*next;
-	struct s_room		*prev;
-}						t_room;
-
-typedef struct			s_entry
-{
-	char				*str;
-	int					line;
-	struct s_entry		*next;
-	struct s_entry		*prev;
-}						t_entry;
-
-typedef struct			s_all
-{
-	int					ants;
-	struct s_room		*room;
-	struct s_link		*link;
-	struct s_entry		*entry;
-}						t_all;
+# include "./debug.h"
 
 /*
 ** --------------------------------------------------------------------------
@@ -62,7 +22,7 @@ typedef struct			s_all
 ** --------------------------------------------------------------------------
 */
 
-t_link					*init_link(char *room1, char *room2);
+t_link					*init_link(t_room *room);
 t_room					*init_room(char *name, int startend, int x, int y);
 t_all					*init_all(void);
 t_entry					*init_entry(char *str, int line);
@@ -85,8 +45,9 @@ void					print_exit(char *str);
 ** --------------------------------------------------------------------------
 */
 
-void					find_start(t_room *room);
-void					find_end(t_room *room);
+t_room					*find_start(t_all *all);
+t_room					*find_end(t_all *all);
+t_room					*find(t_all *all, char *str);
 
 /*
 ** --------------------------------------------------------------------------
@@ -110,6 +71,7 @@ void					parse_link(t_all *all, t_entry *entry);
 int						check_is_room(char *str);
 int						check_is_link(char *str);
 int						room_exists(t_all *all, char *str, int start, int end);
+int						is_possible(t_all *all);
 
 /*
 ** --------------------------------------------------------------------------
@@ -120,7 +82,7 @@ int						room_exists(t_all *all, char *str, int start, int end);
 char					*stock_room_name(char *str);
 int						stock_room_x(char *str);
 int						stock_room_y(char *str);
-char					*stock_link_1(char *str);
-char					*stock_link_2(char *str);
+t_room					*stock_link_1(t_all *all, char *str);
+t_room					*stock_link_2(t_all *all, char *str);
 
 #endif

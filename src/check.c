@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 15:40:49 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/27 19:02:32 by evlad            ###   ########.fr       */
+/*   Updated: 2017/04/28 18:16:07 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,11 @@ int		room_exists(t_all *all, char *str, int start, int end)
 		room = room->next;
 	}
 	return (0);
+}
+
+int		is_possible(t_all *all)
+{
+	if (find_start(all) == NULL || find_end(all) == NULL)
+		return (0);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 14:05:36 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/27 19:07:13 by evlad            ###   ########.fr       */
+/*   Updated: 2017/04/28 14:15:13 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,6 @@ void		free_link(t_link *link)
 	{
 		tmp = link;
 		link = link->next;
-		if (tmp->room1)
-			ft_strdel(&tmp->room1);
-		if (tmp->room2)
-			ft_strdel(&tmp->room2);
 		free(tmp);
 	}
 }
@@ -60,6 +56,7 @@ void		free_room(t_room *room)
 	{
 		tmp = room;
 		room = room->next;
+		free_link(tmp->links);
 		if (tmp->name)
 			ft_strdel(&tmp->name);
 		if (tmp)
@@ -70,7 +67,6 @@ void		free_room(t_room *room)
 void		free_all(t_all *all)
 {
 	free_entry(all->entry);
-	free_link(all->link);
 	free_room(all->room);
 	free(all);
 }

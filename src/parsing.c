@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 13:40:19 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/27 19:06:42 by evlad            ###   ########.fr       */
+/*   Updated: 2017/04/28 15:10:56 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ t_entry		*parse_line(t_all *all, t_entry *entry, int start, int end)
 {
 	if (check_is_room(entry->str) && !room_exists(all, entry->str, start, end))
 		parse_room(all, entry, start, end);
-	else if (check_is_link(entry->str))
+	else if (check_is_link(entry->str) &&
+			(stock_link_1(all, entry->str) != NULL &&
+			 stock_link_2(all, entry->str) != NULL))
 		parse_link(all, entry);
 	else if (entry->str[0] == '#')
 		return (entry);
@@ -30,21 +32,30 @@ t_entry		*parse_line(t_all *all, t_entry *entry, int start, int end)
 
 void		parse_link(t_all *all, t_entry *entry)
 {
+	t_room	*room1;
+	t_room	*room2;
 	t_link	*tmp;
 
-	tmp = NULL;
-	if (all->link == NULL)
-		all->link = init_link(stock_link_1(entry->str),
-				stock_link_2(entry->str));
+	room1 = stock_link_1(all, entry->str);
+	room2 = stock_link_2(all, entry->str);
+	if (room1->links == NULL)
+		room1->links = init_link(stock_link_2(all, entry->str));
 	else
 	{
-		tmp = init_link(stock_link_1(entry->str),
-				stock_link_2(entry->str));
-		tmp->next = all->link;
-		all->link->prev = tmp;
-		all->link = tmp;
+		tmp = init_link(stock_link_2(all, entry->str));
+		tmp->next = room1->links;
+		room1->links->prev = tmp;
+		room1->links = tmp;
 	}
-	ft_printf("LINK: %s-%s\n", all->link->room1, all->link->room2);
+	if (room2->links == NULL)
+		room2->links = init_link(stock_link_1(all, entry->str));
+	else
+	{
+		tmp = init_link(stock_link_1(all, entry->str));
+		tmp->next = room2->links;
+		room2->links->prev = tmp;
+		room2->links = tmp;
+	}
 }
 
 void		parse_room(t_all *all, t_entry *entry, int start, int end)
@@ -69,8 +80,6 @@ void		parse_room(t_all *all, t_entry *entry, int start, int end)
 		all->room->prev = tmp;
 		all->room = tmp;
 	}
-	ft_printf("ROOM: %s %d - %d\n", all->room->name, all->room->x,
-			all->room->y);
 }
 
 void		parse_ants(t_all *all)

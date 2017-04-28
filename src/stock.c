@@ -6,13 +6,13 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 17:22:19 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/25 18:25:20 by evlad            ###   ########.fr       */
+/*   Updated: 2017/04/28 14:41:22 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-char	*stock_room_name(char *str)
+char		*stock_room_name(char *str)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ char	*stock_room_name(char *str)
 	return (ft_strsub(str, 0, i));
 }
 
-int		stock_room_x(char *str)
+int			stock_room_x(char *str)
 {
 	int		i;
 	int		j;
@@ -50,7 +50,7 @@ int		stock_room_x(char *str)
 	return (result);
 }
 
-int		stock_room_y(char *str)
+int			stock_room_y(char *str)
 {
 	int	i;
 	int	j;
@@ -70,8 +70,10 @@ int		stock_room_y(char *str)
 	return (ft_atoi(str + j + 1));
 }
 
-char	*stock_link_1(char *str)
+t_room		*stock_link_1(t_all *all, char *str)
 {
+	char	*tmp;
+	t_room	*result;
 	int		i;
 
 	i = 0;
@@ -81,13 +83,17 @@ char	*stock_link_1(char *str)
 			break ;
 		i++;
 	}
-	return (ft_strsub(str, 0, i));
+	tmp = ft_strsub(str, 0, i);
+	result = find(all, tmp);
+	ft_strdel(&tmp);
+	return (result);
 }
 
-char	*stock_link_2(char *str)
+t_room		*stock_link_2(t_all *all, char *str)
 {
+	char	*tmp;
 	int		i;
-	char	*result;
+	t_room	*result;
 
 	i = 0;
 	while (str[i])
@@ -96,7 +102,9 @@ char	*stock_link_2(char *str)
 			break ;
 		i++;
 	}
-	result = ft_strnew(ft_strlen(str) - i - 1);
-	result = ft_strcpy(result, str + i + 1);
+	tmp = ft_strnew(ft_strlen(str) - i - 1);
+	tmp = ft_strcpy(tmp, str + i + 1);
+	result = find(all, tmp);
+	ft_strdel(&tmp);
 	return (result);
 }

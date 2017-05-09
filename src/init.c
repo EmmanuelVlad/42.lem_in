@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 13:43:40 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/28 14:14:22 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/09 11:12:57 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,15 @@ t_entry		*init_entry(char *str, int line)
 	entry->next = NULL;
 	entry->prev = NULL;
 	return (entry);
+}
+
+t_history	*init_history(void)
+{
+	t_history	*history;
+
+	if (!(history = (t_history*)malloc(sizeof(t_history))))
+		exit(EXIT_FAILURE);
+	history->next = NULL;
+	history->prev = NULL;
+	return (history);
 }

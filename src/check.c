@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 15:40:49 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/28 18:16:07 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/09 14:57:56 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,13 @@ int		room_exists(t_all *all, char *str, int start, int end)
 
 int		is_possible(t_all *all)
 {
-	if (find_start(all) == NULL || find_end(all) == NULL)
+	t_room	*room;
+	t_link	*link;
+
+	room = all->room;
+	link = room->links;
+	if (find_start(all) == NULL || find_end(all) == NULL ||
+			find_start(all)->links == NULL || find_end(all)->links == NULL)
 		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 13:40:19 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/28 15:10:56 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/06 09:05:09 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,5 @@ void		parse_ants(t_all *all)
 	if (ft_strisdigit(all->entry->str))
 		all->ants = ft_atoi(all->entry->str);
 	else
-	{
-		free_all(all);
-		print_exit("ERROR\n");
-	}
+		print_free_exit("ERROR\n", all);
 }

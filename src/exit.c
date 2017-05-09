@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.h                                            :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/28 14:22:36 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/06 07:32:13 by evlad            ###   ########.fr       */
+/*   Created: 2017/05/06 09:02:52 by evlad             #+#    #+#             */
+/*   Updated: 2017/05/06 09:04:22 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEBUG_H
-# define DEBUG_H
-# include "./lem_in.h"
+#include "lem_in.h"
 
-void				show_all_rooms(t_all *all);
-void				show_links_of(t_room *room);
-void				show_all_links(t_all *all);
+void		print_exit(char *str)
+{
+	ft_printf("%s", str);
+	exit(EXIT_FAILURE);
+}
 
-#endif
+void		print_free_exit(char *str, t_all *all)
+{
+	free(all);
+	print_exit(str);
+}

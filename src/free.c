@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 14:05:36 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/28 14:15:13 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/09 12:04:22 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,17 @@ void		free_all(t_all *all)
 	free(all);
 }
 
-void		print_exit(char *str)
+void		free_history(t_history *history)
 {
-	ft_printf("%s", str);
-	exit(EXIT_FAILURE);
+	t_history	*tmp;
+
+	tmp = NULL;
+	while (history->prev)
+		history = history->prev;
+	while (history)
+	{
+		tmp = history;
+		history = history->next;
+		free(tmp);
+	}
 }

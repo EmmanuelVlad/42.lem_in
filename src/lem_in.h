@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 20:06:19 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/28 15:07:53 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/09 12:35:36 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,11 @@ t_link					*init_link(t_room *room);
 t_room					*init_room(char *name, int startend, int x, int y);
 t_all					*init_all(void);
 t_entry					*init_entry(char *str, int line);
+t_history				*init_history(void);
 
 /*
 ** --------------------------------------------------------------------------
-**										INIT
+**										FREE
 ** --------------------------------------------------------------------------
 */
 
@@ -37,7 +38,9 @@ void					free_entry(t_entry *entry);
 void					free_link(t_link *link);
 void					free_room(t_room *room);
 void					free_all(t_all *all);
+void					free_history(t_history *history);
 void					print_exit(char *str);
+void					print_free_exit(char *str, t_all *all);
 
 /*
 ** --------------------------------------------------------------------------
@@ -47,7 +50,8 @@ void					print_exit(char *str);
 
 t_room					*find_start(t_all *all);
 t_room					*find_end(t_all *all);
-t_room					*find(t_all *all, char *str);
+t_room					*find_room(t_all *all, char *str);
+t_room					*find_ant(t_all *all, int ant);
 
 /*
 ** --------------------------------------------------------------------------
@@ -84,5 +88,13 @@ int						stock_room_x(char *str);
 int						stock_room_y(char *str);
 t_room					*stock_link_1(t_all *all, char *str);
 t_room					*stock_link_2(t_all *all, char *str);
+
+/*
+** --------------------------------------------------------------------------
+**										ALGO
+** --------------------------------------------------------------------------
+*/
+
+void					lem_in(t_all *all);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/28 14:30:16 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/28 14:31:11 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/09 12:12:40 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,12 @@ typedef struct			s_all
 	struct s_room		*room;
 	struct s_entry		*entry;
 }						t_all;
+
+typedef struct			s_history
+{
+	struct s_room		*room;
+	struct s_history	*next;
+	struct s_history	*prev;
+}						t_history;
 
 #endif

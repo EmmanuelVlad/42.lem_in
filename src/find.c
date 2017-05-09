@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 14:02:37 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/28 15:05:35 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/09 12:37:58 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_room		*find_end(t_all *all)
 	return (room);
 }
 
-t_room		*find(t_all *all, char *str)
+t_room		*find_room(t_all *all, char *str)
 {
 	t_room	*tmp;
 
@@ -48,6 +48,20 @@ t_room		*find(t_all *all, char *str)
 	while (tmp)
 	{
 		if (ft_strcmp(tmp->name, str) == 0)
+			break ;
+		tmp = tmp->next;
+	}
+	return (tmp);
+}
+
+t_room		*find_ant(t_all *all, int ant)
+{
+	t_room	*tmp;
+
+	tmp = all->room;
+	while (tmp)
+	{
+		if (tmp->occuped == ant)
 			break ;
 		tmp = tmp->next;
 	}

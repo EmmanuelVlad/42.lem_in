@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 17:22:19 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/28 14:41:22 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/09 12:52:46 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_room		*stock_link_1(t_all *all, char *str)
 		i++;
 	}
 	tmp = ft_strsub(str, 0, i);
-	result = find(all, tmp);
+	result = find_room(all, tmp);
 	ft_strdel(&tmp);
 	return (result);
 }
@@ -104,7 +104,7 @@ t_room		*stock_link_2(t_all *all, char *str)
 	}
 	tmp = ft_strnew(ft_strlen(str) - i - 1);
 	tmp = ft_strcpy(tmp, str + i + 1);
-	result = find(all, tmp);
+	result = find_room(all, tmp);
 	ft_strdel(&tmp);
 	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/06 09:02:52 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/06 09:04:22 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/16 10:54:56 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ void		print_exit(char *str)
 
 void		print_free_exit(char *str, t_all *all)
 {
-	free(all);
+	free_all(all);
 	print_exit(str);
 }

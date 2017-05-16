@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 20:06:19 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/09 12:35:36 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/16 12:30:23 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ t_room					*init_room(char *name, int startend, int x, int y);
 t_all					*init_all(void);
 t_entry					*init_entry(char *str, int line);
 t_history				*init_history(void);
+t_ant					*init_ant(int id);
+t_ant					*init_ants(int total);
 
 /*
 ** --------------------------------------------------------------------------

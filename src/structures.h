@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/28 14:30:16 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/16 10:54:34 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/16 12:21:32 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,13 @@ typedef struct			s_history
 	struct s_history	*next;
 	struct s_history	*prev;
 }						t_history;
+
+typedef struct			s_ant
+{
+	int					id;
+	struct s_history	*history;
+	struct s_ant		*next;
+	struct s_ant		*prev;
+}						t_ant;
 
 #endif

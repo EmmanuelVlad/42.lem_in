@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 13:43:40 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/09 11:12:57 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/17 10:24:07 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ t_all		*init_all(void)
 
 	if (!(all = (t_all*)malloc(sizeof(t_all))))
 		exit(EXIT_FAILURE);
-	all->ants = 0;
+	all->total_ants = 0;
+	all->ants = NULL;
 	all->room = NULL;
 	all->entry = NULL;
 	return (all);

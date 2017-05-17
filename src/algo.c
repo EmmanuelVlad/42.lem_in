@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/28 15:25:37 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/09 13:34:44 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/17 10:29:41 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,17 @@ int		move_to_next(t_all *all, int ant)
 
 void		lem_in(t_all *all)
 {
+	t_ant	*ants;
 	int		need_to_move;
 	int		i;
 
+	ants = all->ants;
 	need_to_move = 1;
 	i = 1;
-	while (need_to_move <= all->ants)
+	while (need_to_move <= all->total_ants)
 	{
 		i = need_to_move;
-		while (i <= all->ants)
+		while (i <= all->total_ants)
 		{
 			need_to_move += move_to_next(all, i);
 			i++;

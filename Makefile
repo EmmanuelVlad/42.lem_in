@@ -6,7 +6,7 @@
 #    By: evlad <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/12 16:48:29 by evlad             #+#    #+#              #
-#    Updated: 2017/05/16 12:30:39 by evlad            ###   ########.fr        #
+#    Updated: 2017/05/17 10:22:57 by evlad            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,9 @@ SRC = src
 LIST = main.c \
 	   parsing.c \
 	   init.c \
-	   init_ants.c \
+	   init2.c \
 	   free.c \
+	   free2.c \
 	   check.c \
 	   stock.c \
 	   move.c \

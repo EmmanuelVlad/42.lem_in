@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 14:05:36 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/09 12:04:22 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/17 10:28:10 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,6 @@ void		free_all(t_all *all)
 {
 	free_entry(all->entry);
 	free_room(all->room);
+	free_ants(all->ants);
 	free(all);
-}
-
-void		free_history(t_history *history)
-{
-	t_history	*tmp;
-
-	tmp = NULL;
-	while (history->prev)
-		history = history->prev;
-	while (history)
-	{
-		tmp = history;
-		history = history->next;
-		free(tmp);
-	}
 }

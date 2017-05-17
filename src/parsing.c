@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 13:40:19 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/16 10:53:05 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/17 10:28:38 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,10 @@ void		parse_room(t_all *all, t_entry *entry, int start, int end)
 void		parse_ants(t_all *all)
 {
 	if (ft_strisdigit(all->entry->str))
-		all->ants = ft_atoi(all->entry->str);
+	{
+		all->total_ants = ft_atoi(all->entry->str);
+		all->ants = init_ants(all->total_ants);
+	}
 	else
 		print_free_exit("ERROR\n", all);
 }

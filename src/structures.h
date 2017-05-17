@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/28 14:30:16 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/16 12:21:32 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/17 10:20:00 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ typedef struct			s_entry
 
 typedef struct			s_all
 {
-	int					ants;
+	int					total_ants;
+	struct s_ant		*ants;
 	struct s_room		*room;
 	struct s_entry		*entry;
 }						t_all;

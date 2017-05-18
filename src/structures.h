@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/28 14:30:16 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/18 13:17:20 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/18 13:49:36 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,13 @@ typedef struct			s_history
 	struct s_history	*prev;
 }						t_history;
 
+typedef struct			s_path
+{
+	struct s_room		*room;
+	struct s_path		*next;
+	struct s_path		*prev;
+}						t_path;
+
 typedef struct			s_all
 {
 	int					ants;
@@ -71,6 +78,7 @@ typedef struct			s_all
 	struct s_entry		*entry;
 	struct s_queue		*queue;
 	struct s_history	*history;
+	struct s_path		*path;
 }						t_all;
 
 #endif

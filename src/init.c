@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 13:43:40 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/18 12:34:54 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/18 13:49:45 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ t_all		*init_all(void)
 	all->entry = NULL;
 	all->queue = NULL;
 	all->history = NULL;
+	all->path = NULL;
 	return (all);
 }
 

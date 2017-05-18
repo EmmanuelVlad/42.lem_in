@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/28 15:25:37 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/18 13:26:49 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/18 13:56:14 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int				lem_in(t_all *all)
 	all->history = init_history(all, all->queue->room);
 	while (all->queue)
 	{
-		ft_printf("while: %s\n", all->queue->room->name);
 		if (all->queue->room == find_end(all))
 			return (1);
 		tmp = all->queue->room->links;
@@ -64,7 +63,6 @@ int				lem_in(t_all *all)
 		{
 			if (!find_history(tmp->room, all->history))
 			{
-				ft_printf("\t%s\n", tmp->room->name);
 				add_in_queue(all, all->queue, tmp->room);
 				all->history->prev = init_history(all, tmp->room);
 				all->history->prev->parent = all->queue->room;

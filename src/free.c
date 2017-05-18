@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 14:05:36 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/18 12:52:29 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/18 13:55:49 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void		free_all(t_all *all)
 	free_entry(all->entry);
 	free_queue(all->queue);
 	free_history(all->history);
+	free_path(all->path);
 	free_room(all->room);
 	free(all);
 }

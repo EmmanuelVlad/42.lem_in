@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/28 14:30:16 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/17 10:20:00 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/18 13:17:20 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,27 +49,28 @@ typedef struct			s_entry
 	struct s_entry		*prev;
 }						t_entry;
 
-typedef struct			s_all
+typedef struct			s_queue
 {
-	int					total_ants;
-	struct s_ant		*ants;
 	struct s_room		*room;
-	struct s_entry		*entry;
-}						t_all;
+	struct s_queue		*next;
+	struct s_queue		*prev;
+}						t_queue;
 
 typedef struct			s_history
 {
 	struct s_room		*room;
+	struct s_room		*parent;
 	struct s_history	*next;
 	struct s_history	*prev;
 }						t_history;
 
-typedef struct			s_ant
+typedef struct			s_all
 {
-	int					id;
+	int					ants;
+	struct s_room		*room;
+	struct s_entry		*entry;
+	struct s_queue		*queue;
 	struct s_history	*history;
-	struct s_ant		*next;
-	struct s_ant		*prev;
-}						t_ant;
+}						t_all;
 
 #endif

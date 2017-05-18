@@ -6,13 +6,13 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/28 15:25:37 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/17 10:29:41 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/18 13:26:49 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		move_to_next(t_all *all, int ant)
+int				move_to_next(t_all *all, int ant)
 {
 	t_room	*room;
 	t_link	*tmp;
@@ -37,51 +37,62 @@ int		move_to_next(t_all *all, int ant)
 	return (0);
 }
 
-void		lem_in(t_all *all)
+static void		add_in_queue(t_all *all, t_queue *queue, t_room *room)
 {
-	t_ant	*ants;
+	t_queue *tmp;
+
+	tmp = queue;
+	while (tmp->prev)
+		tmp = tmp->prev;
+	tmp->prev = init_queue(all, room);
+	tmp->prev->next = tmp;
+}
+
+int				lem_in(t_all *all)
+{
+	t_link	*tmp;
+
+	all->queue = init_queue(all, find_start(all));
+	all->history = init_history(all, all->queue->room);
+	while (all->queue)
+	{
+		ft_printf("while: %s\n", all->queue->room->name);
+		if (all->queue->room == find_end(all))
+			return (1);
+		tmp = all->queue->room->links;
+		while (tmp)
+		{
+			if (!find_history(tmp->room, all->history))
+			{
+				ft_printf("\t%s\n", tmp->room->name);
+				add_in_queue(all, all->queue, tmp->room);
+				all->history->prev = init_history(all, tmp->room);
+				all->history->prev->parent = all->queue->room;
+				all->history->prev->next = all->history;
+				all->history = all->history->prev;
+			}
+			tmp = tmp->next;
+		}
+		all->queue = all->queue->prev;
+	}
+	return (0);
+}
+
+void			lem_ino(t_all *all)
+{
 	int		need_to_move;
 	int		i;
 
-	ants = all->ants;
 	need_to_move = 1;
 	i = 1;
-	while (need_to_move <= all->total_ants)
+	while (need_to_move <= all->ants)
 	{
 		i = need_to_move;
-		while (i <= all->total_ants)
+		while (i <= all->ants)
 		{
 			need_to_move += move_to_next(all, i);
 			i++;
 		}
 		write(1, "\n", 1);
 	}
-}
-
-int			move_to_end(t_room *room)
-{
-	int			moves;
-
-	moves = 0;
-	(void)room;
-	return (moves);
-}
-
-t_room		*closest_to_end(t_room *room)
-{
-	t_room		*tmp;
-	t_history	*history;
-
-	history = init_history();
-	history->room = room;
-	tmp = room;
-	if (tmp->start)
-		tmp = tmp->links->room;
-	else
-		tmp = tmp->links->next->room;
-	while (!tmp->end)
-	{
-	}
-	free_history(history);
-	return (room->next);
 }

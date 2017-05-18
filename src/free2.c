@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_ants.c                                        :+:      :+:    :+:   */
+/*   free2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/17 10:12:12 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/17 10:22:03 by evlad            ###   ########.fr       */
+/*   Created: 2017/05/18 12:15:39 by evlad             #+#    #+#             */
+/*   Updated: 2017/05/18 12:30:47 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,17 @@ void		free_history(t_history *history)
 	}
 }
 
-void		free_ants(t_ant *ants)
+void		free_queue(t_queue *queue)
 {
-	t_ant	*tmp;
+	t_queue	*tmp;
 
 	tmp = NULL;
-	if (!ants)
+	if (!queue)
 		return ;
-	while (ants)
+	while (queue)
 	{
-		tmp = ants;
-		ants = ants->next;
-		free_history(tmp->history);
+		tmp = queue;
+		queue = queue->next;
 		free(tmp);
 	}
 }

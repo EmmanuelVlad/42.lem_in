@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 14:05:36 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/17 10:28:10 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/18 12:52:29 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void		free_room(t_room *room)
 	tmp = NULL;
 	if (room == NULL)
 		return ;
-	while (room != NULL)
+	while (room)
 	{
 		tmp = room;
 		room = room->next;
@@ -67,7 +67,8 @@ void		free_room(t_room *room)
 void		free_all(t_all *all)
 {
 	free_entry(all->entry);
+	free_queue(all->queue);
+	free_history(all->history);
 	free_room(all->room);
-	free_ants(all->ants);
 	free(all);
 }

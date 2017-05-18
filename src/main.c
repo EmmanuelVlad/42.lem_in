@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 20:05:40 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/16 10:58:44 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/18 13:15:55 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	process(t_all *all)
 	if (!is_possible(all))
 		print_free_exit("ERROR\n", all);
 	else
-		lem_in(all);
+		ft_printf("is possible\n");
+	show_history(all->history);
 	free_all(all);
 }
 
@@ -56,12 +57,12 @@ int		main(void)
 	{
 		if (i == 1)
 		{
-			entry = init_entry(line, i);
+			entry = init_entry(all, line, i);
 			all->entry = entry;
 		}
 		else
 		{
-			entry->next = init_entry(line, i);
+			entry->next = init_entry(all, line, i);
 			entry->next->prev = entry;
 			entry = entry->next;
 		}

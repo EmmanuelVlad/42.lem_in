@@ -6,49 +6,33 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/16 11:18:47 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/17 10:22:41 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/18 13:26:46 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_history		*init_history(void)
+t_history		*init_history(t_all *all, t_room *room)
 {
 	t_history	*history;
 
 	if (!(history = (t_history*)malloc(sizeof(t_history))))
-		exit(EXIT_FAILURE);
+		free_exit(all);
+	history->room = room;
+	history->parent = NULL;
 	history->next = NULL;
 	history->prev = NULL;
 	return (history);
 }
 
-t_ant		*init_ant(int id)
+t_queue			*init_queue(t_all *all, t_room *room)
 {
-	t_ant		*ant;
+	t_queue		*queue;
 
-	if (!(ant = (t_ant*)malloc(sizeof(t_ant))))
-		exit(EXIT_FAILURE);
-	ant->id = id;
-	ant->history = init_history();
-	ant->next = NULL;
-	ant->prev = NULL;
-	return (ant);
-}
-
-t_ant		*init_ants(int total)
-{
-	t_ant	*tmp;
-	t_ant	*ants;
-
-	tmp = NULL;
-	ants = init_ant(total--);
-	while (total >= 1)
-	{
-		tmp = init_ant(total--);
-		tmp->next = ants;
-		ants->prev = tmp;
-		ants = ants->prev;
-	}
-	return (ants);
+	if (!(queue = (t_queue*)malloc(sizeof(t_queue))))
+		free_exit(all);
+	queue->room = room;
+	queue->next = NULL;
+	queue->prev = NULL;
+	return (queue);
 }

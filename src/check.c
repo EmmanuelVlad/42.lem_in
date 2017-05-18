@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 15:40:49 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/16 11:08:03 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/18 12:46:35 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ int		is_possible(t_all *all)
 		return (0);
 	if (find_start(all) == NULL || find_end(all) == NULL ||
 			find_start(all)->links == NULL || find_end(all)->links == NULL)
+		return (0);
+	if (!lem_in(all))
 		return (0);
 	return (1);
 }

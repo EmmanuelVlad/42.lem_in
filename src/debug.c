@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/28 14:19:43 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/06 08:16:37 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/18 13:21:24 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,31 @@ void		show_all_links(t_all *all)
 		}
 		ft_putchar('\n');
 		room = room->next;
+	}
+}
+
+t_history	*findit(t_room *room, t_history *history)
+{
+	t_history *tmp;
+
+	tmp = history;
+	while (tmp)
+	{
+		if (tmp->room == room)
+			break ;
+		tmp = tmp->next;
+	}
+	return (tmp);
+}
+
+void		show_history(t_history *history)
+{
+	t_history	*tmp;
+
+	tmp = history;
+	while (tmp)
+	{
+		ft_printf("%s\n", tmp->room->name);
+		tmp = findit(tmp->parent, history);
 	}
 }

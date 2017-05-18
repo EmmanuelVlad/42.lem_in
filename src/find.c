@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 14:02:37 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/09 12:37:58 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/18 13:03:18 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,18 @@ t_room		*find_ant(t_all *all, int ant)
 		tmp = tmp->next;
 	}
 	return (tmp);
+}
+
+int			find_history(t_room *room, t_history *history)
+{
+	t_history	*tmp;
+
+	tmp = history;
+	while (tmp)
+	{
+		if (tmp->room->name == room->name)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
 }

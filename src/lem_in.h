@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 20:06:19 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/18 13:51:34 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/18 15:06:33 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int						check_is_room(char *str);
 int						check_is_link(char *str);
 int						room_exists(t_all *all, char *str, int start, int end);
 int						is_possible(t_all *all);
+int						check_path(t_all *all);
 
 /*
 ** --------------------------------------------------------------------------
@@ -94,6 +95,7 @@ int						stock_room_x(char *str);
 int						stock_room_y(char *str);
 t_room					*stock_link_1(t_all *all, char *str);
 t_room					*stock_link_2(t_all *all, char *str);
+void					stock_path(t_all *all, t_history *history);
 
 /*
 ** --------------------------------------------------------------------------
@@ -101,6 +103,6 @@ t_room					*stock_link_2(t_all *all, char *str);
 ** --------------------------------------------------------------------------
 */
 
-int						lem_in(t_all *all);
+void					lem_in(t_all *all);
 
 #endif

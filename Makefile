@@ -6,7 +6,7 @@
 #    By: evlad <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/12 16:48:29 by evlad             #+#    #+#              #
-#    Updated: 2017/05/17 10:22:57 by evlad            ###   ########.fr        #
+#    Updated: 2017/05/18 14:18:57 by evlad            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ LIST = main.c \
 	   find.c \
 	   exit.c \
 	   algo.c \
+	   history.c \
 	   debug.c \
 
 PATH_P = $(OBJ_PATH)$(NAME)/

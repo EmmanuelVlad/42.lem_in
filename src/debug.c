@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/28 14:19:43 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/18 13:56:40 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/18 14:17:59 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,14 @@ t_history	*findit(t_room *room, t_history *history)
 	return (tmp);
 }
 
-void		show_history(t_history *history)
+void		show_path(t_path *path)
 {
-	t_history	*tmp;
+	t_path	*tmp;
 
-	tmp = history;
+	tmp = path;
 	while (tmp)
 	{
 		ft_printf("%s\n", tmp->room->name);
-		tmp = findit(tmp->parent, history);
+		tmp = tmp->next;
 	}
 }

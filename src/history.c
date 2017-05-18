@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 13:23:05 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/18 13:55:14 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/18 15:06:27 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ static t_history	*find_parent(t_room *room, t_history *history)
 	return (tmp);
 }
 
-void				stock_result(t_all *all, t_history *history)
+void				stock_path(t_all *all, t_history *history)
 {
 	t_history	*tmp;
-	t_path		*path;
 	int			i;
 
 	tmp = history;

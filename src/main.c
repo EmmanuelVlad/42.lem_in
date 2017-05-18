@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 20:05:40 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/18 13:15:55 by evlad            ###   ########.fr       */
+/*   Updated: 2017/05/18 15:26:24 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,10 @@ void	process(t_all *all)
 			tmp = parse_line(all, tmp, 0, 0);
 		tmp = tmp->next;
 	}
-	show_all_rooms(all);
-	show_all_links(all);
 	if (!is_possible(all))
 		print_free_exit("ERROR\n", all);
 	else
-		ft_printf("is possible\n");
-	show_history(all->history);
+		lem_in(all);
 	free_all(all);
 }
 

@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 13:43:40 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/18 13:49:45 by evlad            ###   ########.fr       */
+/*   Updated: 2017/06/26 11:34:04 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ t_room		*init_room(char *name, int startend, int x, int y)
 	room->y = y;
 	room->occuped = 0;
 	room->next = NULL;
+	room->links = NULL;
 	return (room);
 }
 

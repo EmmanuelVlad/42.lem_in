@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 17:22:19 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/09 12:52:46 by evlad            ###   ########.fr       */
+/*   Updated: 2017/06/26 12:14:40 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,11 @@ char		*stock_room_name(char *str)
 	return (ft_strsub(str, 0, i));
 }
 
-int			stock_room_x(char *str)
+int			stock_room_x(t_all *all, char *str)
 {
 	int		i;
 	int		j;
 	char	*tmp;
-	int		result;
 
 	i = 0;
 	while (str[i])
@@ -45,12 +44,15 @@ int			stock_room_x(char *str)
 			break ;
 	}
 	tmp = ft_strsub(str, i, j - i);
-	result = ft_atoi(tmp);
-	free(tmp);
-	return (result);
+	if (ft_atoi(tmp) > 2147483647 || ft_atoi(tmp) < -2147483648)
+	{
+		free(tmp);
+		print_free_exit("ERROR\n", all);
+	}
+	return (return_and_free(ft_atoi(tmp), tmp));
 }
 
-int			stock_room_y(char *str)
+int			stock_room_y(t_all *all, char *str)
 {
 	int	i;
 	int	j;
@@ -66,6 +68,10 @@ int			stock_room_y(char *str)
 	{
 		if (str[++j] == ' ')
 			break ;
+	}
+	if (ft_atoi(str + j + 1) > 2147483647 || ft_atoi(str + j + 1) < -2147483648)
+	{
+		print_free_exit("ERROR\n", all);
 	}
 	return (ft_atoi(str + j + 1));
 }

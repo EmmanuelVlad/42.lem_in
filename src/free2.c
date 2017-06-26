@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 12:15:39 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/18 16:02:09 by evlad            ###   ########.fr       */
+/*   Updated: 2017/06/26 11:29:19 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void		free_queue(t_queue *queue)
 	tmp = NULL;
 	if (!queue)
 		return ;
+	while (queue->prev)
+		queue = queue->prev;
 	while (queue)
 	{
 		tmp = queue;
@@ -55,4 +57,10 @@ void		free_path(t_path *path)
 		path = path->next;
 		free(tmp);
 	}
+}
+
+int			return_and_free(int ret, char *tofree)
+{
+	free(tofree);
+	return (ret);
 }

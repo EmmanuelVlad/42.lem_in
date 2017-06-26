@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 20:05:40 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/18 15:26:24 by evlad            ###   ########.fr       */
+/*   Updated: 2017/06/26 12:15:06 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,16 @@ void	process(t_all *all)
 	free_all(all);
 }
 
-int		main(void)
+void	read_gnl(t_all *all)
 {
-	int			i;
 	char		*line;
+	int			i;
 	t_entry		*entry;
-	t_all		*all;
 
 	i = 1;
-	all = init_all();
 	while (get_next_line(0, &line))
 	{
-		if (i == 1)
+		if (i++ == 1)
 		{
 			entry = init_entry(all, line, i);
 			all->entry = entry;
@@ -63,9 +61,18 @@ int		main(void)
 			entry->next->prev = entry;
 			entry = entry->next;
 		}
-		i++;
 	}
 	ft_strdel(&line);
+	if (i == 1)
+		print_free_exit("ERROR\n", all);
+}
+
+int		main(void)
+{
+	t_all		*all;
+
+	all = init_all();
+	read_gnl(all);
 	process(all);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 13:23:05 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/18 15:06:27 by evlad            ###   ########.fr       */
+/*   Updated: 2017/06/26 09:30:42 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void				stock_path(t_all *all, t_history *history)
 	int			i;
 
 	tmp = history;
-	all->path = init_path(all, tmp->room);
+	all->path = init_path(all, find_end(all));
 	i = 0;
 	while (tmp)
 	{

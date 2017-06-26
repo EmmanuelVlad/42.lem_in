@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 14:05:36 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/18 13:55:49 by evlad            ###   ########.fr       */
+/*   Updated: 2017/06/26 11:34:14 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void		free_room(t_room *room)
 	{
 		tmp = room;
 		room = room->next;
-		free_link(tmp->links);
+		if (tmp->links)
+			free_link(tmp->links);
 		if (tmp->name)
 			ft_strdel(&tmp->name);
 		if (tmp)

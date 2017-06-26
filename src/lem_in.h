@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 20:06:19 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/18 15:06:33 by evlad            ###   ########.fr       */
+/*   Updated: 2017/06/26 11:00:13 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void					free_path(t_path *path);
 void					print_exit(char *str);
 void					print_free_exit(char *str, t_all *all);
 void					free_exit(t_all *all);
+int						return_and_free(int ret, char *tofree);
 
 /*
 ** --------------------------------------------------------------------------
@@ -91,8 +92,8 @@ int						check_path(t_all *all);
 */
 
 char					*stock_room_name(char *str);
-int						stock_room_x(char *str);
-int						stock_room_y(char *str);
+int						stock_room_x(t_all *all, char *str);
+int						stock_room_y(t_all *all, char *str);
 t_room					*stock_link_1(t_all *all, char *str);
 t_room					*stock_link_2(t_all *all, char *str);
 void					stock_path(t_all *all, t_history *history);

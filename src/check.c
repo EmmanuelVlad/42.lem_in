@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 15:40:49 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/18 15:07:01 by evlad            ###   ########.fr       */
+/*   Updated: 2017/06/26 12:14:00 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,9 @@ int		room_exists(t_all *all, char *str, int start, int end)
 	{
 		name = stock_room_name(str);
 		if ((ft_strcmp(room->name, name) == 0) ||
-			(room->x == stock_room_x(str) && room->y == stock_room_y(str)) ||
-			(room->start && start) || (room->end && end))
+				(room->x == stock_room_x(all, str) &&
+				room->y == stock_room_y(all, str)) ||
+				(room->start && start) || (room->end && end))
 		{
 			ft_strdel(&name);
 			return (1);

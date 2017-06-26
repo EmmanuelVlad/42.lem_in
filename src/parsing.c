@@ -6,7 +6,7 @@
 /*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 13:40:19 by evlad             #+#    #+#             */
-/*   Updated: 2017/05/18 13:03:33 by evlad            ###   ########.fr       */
+/*   Updated: 2017/06/26 12:14:26 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,13 @@ void		parse_room(t_all *all, t_entry *entry, int start, int end)
 	if (all->room == NULL)
 	{
 		if (!(all->room = init_room(stock_room_name(entry->str), startend,
-				stock_room_x(entry->str), stock_room_y(entry->str))))
+				stock_room_x(all, entry->str), stock_room_y(all, entry->str))))
 			free_exit(all);
 	}
 	else
 	{
 		if (!(tmp = init_room(stock_room_name(entry->str), startend,
-				stock_room_x(entry->str), stock_room_y(entry->str))))
+				stock_room_x(all, entry->str), stock_room_y(all, entry->str))))
 			free_exit(all);
 		tmp->next = all->room;
 		all->room->prev = tmp;
@@ -88,8 +88,12 @@ void		parse_room(t_all *all, t_entry *entry, int start, int end)
 
 void		parse_ants(t_all *all)
 {
-	if (ft_strisdigit(all->entry->str))
-		all->ants = ft_atoi(all->entry->str);
+	char	*dup;
+
+	dup = all->entry->str;
+	if (ft_strisdigit(dup) && (ft_atoi(dup) < 2147483648 &&
+				ft_atoi(dup) > -2147483649))
+		all->ants = ft_atoi(dup);
 	else
 		print_free_exit("ERROR\n", all);
 }

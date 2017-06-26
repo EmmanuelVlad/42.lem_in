@@ -6,7 +6,7 @@
 #    By: evlad <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/12 16:48:29 by evlad             #+#    #+#              #
-#    Updated: 2017/05/18 14:18:57 by evlad            ###   ########.fr        #
+#    Updated: 2017/06/26 14:06:29 by evlad            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ $(LIBFT):
 $(NAME): $(PROGRAM)
 	@echo -n '-> Compiling LEM_IN ..'
 	@gcc -o $(NAME) $(OBJ:%=$(OBJ_PATH)$(NAME)/%) $(LIBFT_INC)
-	@echo -n '.		'
+	@echo -n '.			'
 	@echo $(OK)
 
 clean:
